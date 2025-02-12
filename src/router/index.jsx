@@ -3,7 +3,7 @@ import Home from "../pages/Home";
 import MainLayout from "../components/MainLayout";
 import Contacts from "../pages/Contacts";
 import Payment from "../pages/Payment";
-import Delivery from "../pages/Delivery";
+
 import Cart from "../pages/Cart";
 
 export const rooter = createBrowserRouter([
@@ -29,11 +29,6 @@ export const rooter = createBrowserRouter([
         Component: Payment,
       },
 
-      {
-        path: "/delivery",
-
-        Component: Delivery,
-      },
       {
         path: "/cart",
 
