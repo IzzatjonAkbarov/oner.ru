@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { ShopContext } from "../../components/context/Cartcontext/inex";
-import EmptyCard from "../../components/Emptycard";
+import EmptyCard from "../../components/EmptyCard";
 import { CiHeart } from "react-icons/ci";
 import { ShoppingCartOutlined, StarFilled } from "@ant-design/icons";
 import { toast } from "react-toastify";
