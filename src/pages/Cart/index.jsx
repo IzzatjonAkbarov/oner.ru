@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import Total from "./total";
+import Total from "./Total";
 import { ShopContext } from "../../components/context/Cartcontext/inex";
 import Cartitem from "./Cartitem";
 import EmptyCard from "../../components/Emptycard";
