@@ -5,6 +5,7 @@ import Contacts from "../pages/Contacts";
 import Payment from "../pages/Payment";
 
 import Cart from "../pages/Cart";
+import Like from "../pages/Like";
 
 export const rooter = createBrowserRouter([
   {
@@ -27,6 +28,11 @@ export const rooter = createBrowserRouter([
         path: "/payments",
 
         Component: Payment,
+      },
+      {
+        path: "/like",
+
+        Component: Like,
       },
 
       {

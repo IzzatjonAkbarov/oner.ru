@@ -7,10 +7,14 @@ import { Button } from "antd";
 
 const AutoOil = () => {
   const [cardData, setCardData] = useState([]);
+
+  const [loading, setloading] = useState(true);
   useEffect(() => {
     axios
       .get("https://67908d83af8442fd7376b1e4.mockapi.io/currency")
-      .then((data) => setCardData(data.data));
+      .then((data) => {
+        setCardData(data.data), setloading(false);
+      });
   }, []);
   let slicedData = cardData.slice(0, 4);
 
@@ -24,42 +28,155 @@ const AutoOil = () => {
           <p>Все автомасла</p>
         </NavLink>
       </div>
-      <div className=" container1 grid grid-cols-4 gap-10 max-[1024]:px max-[1024px]:grid-cols-3 max-[680px]:grid-cols-2 max-[480px]:grid-cols-1">
-        {/* <div className="w-[300px] h-full rounded-[10px] mr-[20px] relative cursor-pointer overflow-hidden">
-          <div
-            className="relative shadow-black/5 shadow-none rounded-large"
-            style={{ maxWidth: "fit-content" }}>
-            <img
-              src="https://dev.oner.ru//storage/banner-main/caIcG50kKHZfzoDjAqkoDuhlBgiggj-metaUmVjdGFuZ2xlIDI5Mi5wbmc=-.png"
-              className="relative z-10 opacity-0 shadow-black/5 data-[loaded=true]:opacity-100 shadow-none transition-transform-opacity motion-reduce:transition-none !duration-300 rounded-large w-full h-full object-cover"
-              alt="Banner Image"
-              data-loaded="true"
-            />
-          </div>
-          <div className="absolute top-0 left-0 z-20 p-[30px]">
-            <div className="text-white text-2xl font-500">
-              <p>Автомасла №1</p>
-              <p>от официальных</p>
-              <p>дилеров</p>
+      {loading ? (
+        <>
+          <div className=" container1 grid grid-cols-4 max-[1128px]:grid-cols-4 max-[900px]:grid-cols-3 max-[665px]:grid-cols-2 max-[445px]:grid-cols-1 gap-5 ">
+            <div
+              role="status"
+              className="w-full p-4 border border-gray-200 rounded-sm shadow-sm animate-pulse m">
+              <div className="flex items-center justify-center h-48 mb-4 bg-gray-300 rounded-sm ">
+                <svg
+                  className="w-10 h-10 text-gray-200 dark:text-gray-600"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 16 20">
+                  <path d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z" />
+                  <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
+                </svg>
+              </div>
+              <div className="h-2.5 bg-gray-200 rounded-full  w-full mb-4" />
+              <div className="h-2 bg-gray-200 rounded-full  mb-2.5" />
+              <div className="h-2 bg-gray-200 rounded-full  mb-2.5" />
+              <div className="h-2 bg-gray-200 rounded-full " />
+              <div className="flex items-center mt-4">
+                <svg
+                  className="w-10 h-10 me-3 text-gray-200 dark:text-gray-700"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 20 20">
+                  <path d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z" />
+                </svg>
+                <div>
+                  <div className="h-2.5 bg-gray-200 rounded-full  w-32 mb-2" />
+                  <div className="w-full h-2 bg-gray-200 rounded-full " />
+                </div>
+              </div>
+              <span className="sr-only">Loading...</span>
+            </div>
+            <div
+              role="status"
+              className="w-full p-4 border border-gray-200 rounded-sm shadow-sm animate-pulse m">
+              <div className="flex items-center justify-center h-48 mb-4 bg-gray-300 rounded-sm ">
+                <svg
+                  className="w-10 h-10 text-gray-200 dark:text-gray-600"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 16 20">
+                  <path d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z" />
+                  <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
+                </svg>
+              </div>
+              <div className="h-2.5 bg-gray-200 rounded-full  w-full mb-4" />
+              <div className="h-2 bg-gray-200 rounded-full  mb-2.5" />
+              <div className="h-2 bg-gray-200 rounded-full  mb-2.5" />
+              <div className="h-2 bg-gray-200 rounded-full " />
+              <div className="flex items-center mt-4">
+                <svg
+                  className="w-10 h-10 me-3 text-gray-200 dark:text-gray-700"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 20 20">
+                  <path d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z" />
+                </svg>
+                <div>
+                  <div className="h-2.5 bg-gray-200 rounded-full  w-32 mb-2" />
+                  <div className="w-full h-2 bg-gray-200 rounded-full " />
+                </div>
+              </div>
+              <span className="sr-only">Loading...</span>
+            </div>
+            <div
+              role="status"
+              className="w-full p-4 border border-gray-200 rounded-sm shadow-sm animate-pulse m">
+              <div className="flex items-center justify-center h-48 mb-4 bg-gray-300 rounded-sm ">
+                <svg
+                  className="w-10 h-10 text-gray-200 dark:text-gray-600"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 16 20">
+                  <path d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z" />
+                  <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
+                </svg>
+              </div>
+              <div className="h-2.5 bg-gray-200 rounded-full  w-full mb-4" />
+              <div className="h-2 bg-gray-200 rounded-full  mb-2.5" />
+              <div className="h-2 bg-gray-200 rounded-full  mb-2.5" />
+              <div className="h-2 bg-gray-200 rounded-full " />
+              <div className="flex items-center mt-4">
+                <svg
+                  className="w-10 h-10 me-3 text-gray-200 dark:text-gray-700"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 20 20">
+                  <path d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z" />
+                </svg>
+                <div>
+                  <div className="h-2.5 bg-gray-200 rounded-full  w-32 mb-2" />
+                  <div className="w-full h-2 bg-gray-200 rounded-full " />
+                </div>
+              </div>
+              <span className="sr-only">Loading...</span>
+            </div>
+            <div
+              role="status"
+              className="w-full p-4 border border-gray-200 rounded-sm shadow-sm animate-pulse m">
+              <div className="flex items-center justify-center h-48 mb-4 bg-gray-300 rounded-sm ">
+                <svg
+                  className="w-10 h-10 text-gray-200 dark:text-gray-600"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 16 20">
+                  <path d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z" />
+                  <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
+                </svg>
+              </div>
+              <div className="h-2.5 bg-gray-200 rounded-full  w-full mb-4" />
+              <div className="h-2 bg-gray-200 rounded-full  mb-2.5" />
+              <div className="h-2 bg-gray-200 rounded-full  mb-2.5" />
+              <div className="h-2 bg-gray-200 rounded-full " />
+              <div className="flex items-center mt-4">
+                <svg
+                  className="w-10 h-10 me-3 text-gray-200 dark:text-gray-700"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 20 20">
+                  <path d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z" />
+                </svg>
+                <div>
+                  <div className="h-2.5 bg-gray-200 rounded-full  w-32 mb-2" />
+                  <div className="w-full h-2 bg-gray-200 rounded-full " />
+                </div>
+              </div>
+              <span className="sr-only">Loading...</span>
             </div>
           </div>
-          <div
-            className=" shadow-black/5 shadow-none rounded-large !absolute bottom-0 right-0 !max-w-2/3"
-            style={{ maxWidth: "fit-content" }}>
-            {" "}
-            <img
-              src="https://dev.oner.ru//storage/banner-main/5i5KUIGwbiFygoPzPVtRx1HGt9MqbJ-metaaW1hZ2UgOTMucG5n-.png"
-              className="relative opacity-0 shadow-black/5 data-[loaded=true]:opacity-100 shadow-none transition-transform-opacity motion-reduce:transition-none !duration-300 z-10 object-cover object-center mr-[10px] rounded-[0px]"
-              alt="Автомасла"
-              data-loaded="true"
-            />
-          </div>
-        </div> */}
+        </>
+      ) : (
+        <div className=" container1 grid grid-cols-4 gap-10 max-[1024]:px max-[1024px]:grid-cols-3 max-[680px]:grid-cols-2 max-[480px]:grid-cols-1">
+          {slicedData.map((value) => (
+            <ProductCard key={value.id} {...value} />
+          ))}
+        </div>
+      )}
 
-        {slicedData.map((value) => (
-          <ProductCard key={value.id} {...value} />
-        ))}
-      </div>
       <div className="container1 py-10 grid grid-cols-3 gap-5 max-[900px]:grid-cols-2 max-[480px]:grid-cols-1">
         <div className="relative !rounded-xl overflow-hidden w-full xl:h-[250px] sm:h-[215px] h-[180px] bg-grey-light">
           <div

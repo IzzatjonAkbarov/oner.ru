@@ -8,11 +8,15 @@ import { CiHeart } from "react-icons/ci";
 
 import { useContext, useState } from "react";
 import { ShopContext } from "../context/Cartcontext/inex";
+import { toast } from "react-toastify";
 
 let like = JSON.parse(localStorage.getItem("like")) || [];
 const ProductCard = ({ id, image, name, rate, price, old_price, comments }) => {
   const [liked, setLiked] = useState(false);
   const { dispatch } = useContext(ShopContext);
+  let add = () => toast.success("Added to cart 🛒");
+  let likingcard = () => toast.success("Added to like 🛒");
+  let unlikingcard = () => toast.warning("Removed from like ");
   return (
     <div className="w-full border border-gray-200 rounded-lg p-4 bg-white shadow-md">
       <div className="relative">
@@ -30,6 +34,7 @@ const ProductCard = ({ id, image, name, rate, price, old_price, comments }) => {
               localStorage.setItem("like", JSON.stringify(like));
               dispatch({ type: "deletefromlike", deletedId: id });
               setLiked(false);
+              unlikingcard();
             } else {
               like.push({ id, image, name, rate, price, old_price, comments });
               localStorage.setItem("like", JSON.stringify(like));
@@ -38,6 +43,7 @@ const ProductCard = ({ id, image, name, rate, price, old_price, comments }) => {
                 product: { id, image, name, rate, price, old_price, comments },
               });
               setLiked(true);
+              likingcard();
             }
           }}
           className={` absolute top-0 right-0 p-2 rounded-full shadow-md transition-colors ${
@@ -70,12 +76,21 @@ const ProductCard = ({ id, image, name, rate, price, old_price, comments }) => {
           </div>
 
           <button
-            onClick={() =>
+            onClick={() => {
               dispatch({
                 type: "add",
-                product: { id, image, name, rate, price, old_price, comments },
-              })
-            }
+                product: {
+                  id,
+                  image,
+                  name,
+                  rate,
+                  price,
+                  old_price,
+                  comments,
+                },
+              }),
+                add();
+            }}
             className="w-fit text-center px-2 py-1 border border-purple-500 text-white text-sm font-semibold  rounded-lg hover:bg-purple-600 transition">
             <ShoppingCartOutlined className="!text-purple-500 hover:!text-white text-2xl" />
           </button>

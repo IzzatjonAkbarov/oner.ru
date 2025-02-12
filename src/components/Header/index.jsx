@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 
 import { Link, NavLink } from "react-router-dom";
 import {
+  HeartFilled,
   MenuOutlined,
   PhoneOutlined,
   SearchOutlined,
@@ -61,11 +62,20 @@ const Header = () => {
         </div>
 
         <div className="flex items-center gap-10 max-[820px]:gap-4 max-[280px]:gap-2">
-          <Link className="flex items-center gap-1 px-5 max-[380px]:py-1 max-[380px]:px-1 max-[380px]:border border-[#7A50B7] rounded-full py-4 max-[280px]:px-2 max-[280px]:py-2">
-            <img src={user} alt="" />
-            <p className="font-normal text-[14px] max-[800px]:hidden max-[280px]:text-[12px]">
-              Вход / Регистрация
+          <Link
+            to={"/like"}
+            className="px-4 relative max-[380px]:py-1 max-[380px]:px-2 py-3 flex items-center gap-2 w-fit rounded-lg border border-gray-400 max-[280px]:px-2 max-[280px]:py-2">
+            <HeartFilled className="!text-purple-700" />
+            <p className="max-[1024px]:hidden max-[280px]:text-[12px]">
+              Wishlist
             </p>
+            {state.like.length !== 0 ? (
+              <p className=" max-[1024px]:absolute top-[-5px] right-[-5px] max-[1024px]:rounded-full max-[1024px]:px-1.5 px-1 text-[12px] rounded-xs bg-[#fb6019] text-white">
+                {state.like.length}
+              </p>
+            ) : (
+              ""
+            )}
           </Link>
           <Link
             to={"/cart"}
