@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import Total from "./Total";
 import { ShopContext } from "../../components/context/Cartcontext/inex";
 import Cartitem from "./Cartitem";
-import EmptyCard from "../../components/Emptycard";
+import EmptyCard from "../../components/EmptyCard";
 
 const Cart = () => {
   const { state } = useContext(ShopContext);
